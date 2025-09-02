@@ -58,7 +58,14 @@ def get_initial_time(token: str) -> int | None:
         response = httpx.get(url, headers=headers)
         response.raise_for_status()
 
-        return response.json()["externalTimes"][0]["timeSeconds"]
+        return next(
+            (
+                item["timeSeconds"]
+                for item in response.json()["externalTimes"]
+                if item.get("type") == "initial"
+            ),
+            0,
+        )
     except Exception as e:  # noqa: BLE001
         st.error(f"Error fetching initial time: {e!s}")
         return None
