@@ -50,7 +50,7 @@ button_col1, button_col2, button_col3 = st.columns([1, 1, 1])
 with button_col1:
     st.link_button(
         "☁️ Official Progress",
-        "https://www.dreamingspanish.com/progress",
+        "https://app.dreaming.com/spanish/progress",
         use_container_width=True,
     )
 
