@@ -24,7 +24,7 @@ def fetch_ds_data(token: str) -> dict | None:
                       otherwise None.
 
     """
-    url = "https://www.dreamingspanish.com/.netlify/functions/dayWatchedTime"
+    url = "https://app.dreaming.com/.netlify/functions/dayWatchedTime"
     headers = {"Authorization": f"Bearer {token}"}
 
     try:
@@ -51,7 +51,7 @@ def get_initial_time(token: str) -> int | None:
                      otherwise None.
 
     """
-    url = "https://www.dreamingspanish.com/.netlify/functions/externalTime"
+    url = "https://app.dreaming.com/.netlify/functions/externalTime"
     headers = {"Authorization": f"Bearer {token}"}
 
     try:
