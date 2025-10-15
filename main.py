@@ -115,7 +115,9 @@ user_info = get_user_info(token) or 0
 df = result.df.rename(columns={"timeSeconds": "seconds"})
 
 # Calculate cumulative seconds and streak
-df["cumulative_seconds"] = df["seconds"].cumsum() + initial_time
+ds_watch_time = user_info['user']['cumulativeWatchTimes']['es']
+external_watch_time = user_info['user']['externalTimeSummary']['es']['timeSeconds']
+df["cumulative_seconds"] = ds_watch_time + external_watch_time
 df["cumulative_minutes"] = df["cumulative_seconds"] / 60
 df["cumulative_hours"] = df["cumulative_minutes"] / 60
 df["streak"] = (df["seconds"] > 0).astype(int)
